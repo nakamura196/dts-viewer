@@ -1,0 +1,26 @@
+{
+  "Common": {
+    "title": "DTS Viewer",
+    "description": "DTS Viewer",
+    "itemCount": "アイテム数: {count, number}",
+    "viewItems": "アイテムを見る",
+    "viewCollections": "コレクションを見る",
+    "noData": "データがありません",
+    "loading": "読み込み中...",
+    "copyright": "© 2025 DTS Viewer",
+    "en": "英語",
+    "ja": "日本語",
+    "collection": "コレクション",
+    "document": "ドキュメント",
+    "navigation": "ナビゲーション",
+    "home": "ホーム",
+    "about": "このサイトについて",
+    "example": "例",
+    "form": "フォーム",
+    "formDescription": "DTSのURLを入力してコレクションを表示します。",
+    "urlPlaceholder": "https://example.com/dts",
+    "view": "表示",
+    "download": "ダウンロード",
+    "comingSoon": "Coming Soon"
+  }
+}

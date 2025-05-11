@@ -1,0 +1,26 @@
+{
+  "Common": {
+    "title": "DTS Viewer",
+    "description": "DTS Viewer",
+    "itemCount": "Item Count: {count, number}",
+    "viewItems": "View Items",
+    "viewCollections": "View Collections",
+    "noData": "No Data",
+    "loading": "Loading...",
+    "copyright": "© 2025 DTS Viewer",
+    "en": "English",
+    "ja": "Japanese",
+    "collection": "Collection",
+    "document": "Document",
+    "navigation": "Navigation",
+    "home": "Home",
+    "about": "About",
+    "example": "Example",
+    "form": "Form",
+    "formDescription": "Enter the URL of the DTS to view the collection.",
+    "urlPlaceholder": "https://example.com/dts",
+    "view": "View",
+    "download": "Download",
+    "comingSoon": "Coming Soon"
+  }
+}
