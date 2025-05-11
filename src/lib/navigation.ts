@@ -57,8 +57,12 @@ export class Navigation {
       const member: ReferenceData = {
         identifier: (memberRaw['identifier'] as string) || (memberRaw.ref as string),
         '@type': 'CitableUnit' as const,
-        level: (data.level as number) || (data['dts:level'] as number),
-        citeType: (data.citeType as string) || (data['dts:citeType'] as string),
+        level:
+          (memberRaw.level as number) || (data.level as number) || (data['dts:level'] as number),
+        citeType:
+          (memberRaw.citeType as string) ||
+          (data.citeType as string) ||
+          (data['dts:citeType'] as string),
       };
 
       members.push(member);

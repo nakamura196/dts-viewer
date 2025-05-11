@@ -15,6 +15,7 @@ export type MemberData = {
   totalChildren?: number;
   navigation?: string;
   document?: string;
+  download?: string;
 };
 
 export class Collection {
@@ -30,6 +31,7 @@ export class Collection {
         title: memberRaw.title as string,
         navigation: ((memberRaw['navigation'] as string) || '').replace(domain, '') as string,
         document: ((memberRaw['document'] as string) || '').replace(domain, '') as string,
+        download: ((memberRaw['download'] as string) || '') as string,
         totalChildren: (memberRaw['totalChildren'] as number) || 0,
         description: memberRaw['description'] as string,
       };
@@ -56,6 +58,7 @@ export class Collection {
       '@type': data['@type'] as string,
       dtsVersion: data['dts:version'] as string,
       title: data.title as string,
+      description: data.description as string,
       member: members,
     };
 

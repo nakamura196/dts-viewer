@@ -1,7 +1,7 @@
 {
   "Common": {
     "title": "DTS Viewer",
-    "description": "DTS Viewer",
+    "description": "DTS (Distributed Text Services) API to view and search text collections.",
     "itemCount": "Item Count: {count, number}",
     "viewItems": "View Items",
     "viewCollections": "View Collections",
@@ -9,7 +9,7 @@
     "loading": "Loading...",
     "copyright": "© 2025 DTS Viewer",
     "en": "English",
-    "ja": "Japanese",
+    "ja": "日本語",
     "collection": "Collection",
     "document": "Document",
     "navigation": "Navigation",
@@ -20,13 +20,14 @@
     "formDescription": "Enter the URL of the DTS to view the collection.",
     "urlPlaceholder": "https://example.com/dts",
     "view": "View",
-    "download": "Download",
+    "download": "Text Download",
     "comingSoon": "Coming Soon",
     "notFound": "Not Found",
     "error": "Error",
     "identifier": "Identifier",
     "citeType": "Cite Type",
     "level": "Level",
-    "items": "Items"
+    "items": "Items",
+    "jsonDownload": "JSON Download"
   }
 }

@@ -26,8 +26,12 @@ export default function Collections({ base, url, data }: CollectionProps) {
     return encodeURIComponent(combined);
   };
 
-  const getDownloadUrl = (document: string) => {
-    return getDomain(url) + removeVars(document);
+  const getDownloadUrl = (member: MemberData) => {
+    if (member.download) {
+      return member.download;
+    }
+    const downloadUrl = getDomain(url) + removeVars(member.document || '');
+    return downloadUrl;
   };
 
   const truncateText = (text: string, maxLength: number = 100) => {
@@ -50,15 +54,15 @@ export default function Collections({ base, url, data }: CollectionProps) {
             )}
             <a
               href={url}
-              className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 transition-colors"
+              className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 dark:focus:ring-offset-gray-800 transition-colors"
             >
-              {t('download')}
+              {t('jsonDownload')}
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                 />
               </svg>
             </a>
@@ -121,19 +125,47 @@ export default function Collections({ base, url, data }: CollectionProps) {
 
                 {member.totalChildren === 0 && (
                   <div className="pt-2 space-y-2">
-                    <Link
-                      href={`/?base=${base}&url=${getNavigationUrl(member.navigation || '')}`}
-                      className="w-full inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 transition-colors"
-                    >
-                      {t('navigation')}
-                    </Link>
-
                     <a
-                      href={getDownloadUrl(member.document || '')}
+                      href={getDownloadUrl(member)}
                       className="w-full inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 transition-colors"
                     >
                       {t('download')}
+                      <svg
+                        className="w-4 h-4 ml-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                        />
+                      </svg>
                     </a>
+
+                    {member.navigation && (
+                      <Link
+                        href={`/?base=${base}&url=${getNavigationUrl(member.navigation || '')}`}
+                        className="w-full inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 transition-colors"
+                      >
+                        {t('navigation')}
+                        <svg
+                          className="w-4 h-4 ml-2"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
+                        </svg>
+                      </Link>
+                    )}
                   </div>
                 )}
               </div>
