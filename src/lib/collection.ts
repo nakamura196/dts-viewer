@@ -4,6 +4,7 @@ export type CollectionData = {
   dtsVersion: string;
   title: string;
   member: MemberData[];
+  description?: string;
 };
 
 export type MemberData = {
@@ -30,6 +31,7 @@ export class Collection {
         navigation: ((memberRaw['navigation'] as string) || '').replace(domain, '') as string,
         document: ((memberRaw['document'] as string) || '').replace(domain, '') as string,
         totalChildren: (memberRaw['totalChildren'] as number) || 0,
+        description: memberRaw['description'] as string,
       };
 
       // member.totalChildren = member.totalItems as number;

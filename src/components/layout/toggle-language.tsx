@@ -14,11 +14,7 @@ export const ToggleLanguage = () => {
   const switchLanguage = (newLocale: string) => {
     // 現在のパスから言語部分を除去して新しい言語を追加
     const newPath = pathname.replace(/^\/[^\/]+/, '');
-    const searchParams = new URLSearchParams(window.location.search);
-    const url = new URL(window.location.href);
-    url.pathname = `/${newLocale}${newPath}`;
-    url.search = searchParams.toString();
-    router.push(url.toString());
+    router.push(`/${newLocale}${newPath}`);
   };
 
   return (

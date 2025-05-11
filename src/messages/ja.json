@@ -21,6 +21,12 @@
     "urlPlaceholder": "https://example.com/dts",
     "view": "表示",
     "download": "ダウンロード",
-    "comingSoon": "Coming Soon"
+    "comingSoon": "Coming Soon",
+    "notFound": "見つかりません",
+    "error": "エラー",
+    "identifier": "識別子",
+    "citeType": "引用タイプ",
+    "level": "レベル",
+    "items": "アイテム"
   }
 }

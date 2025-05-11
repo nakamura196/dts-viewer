@@ -21,6 +21,12 @@
     "urlPlaceholder": "https://example.com/dts",
     "view": "View",
     "download": "Download",
-    "comingSoon": "Coming Soon"
+    "comingSoon": "Coming Soon",
+    "notFound": "Not Found",
+    "error": "Error",
+    "identifier": "Identifier",
+    "citeType": "Cite Type",
+    "level": "Level",
+    "items": "Items"
   }
 }
