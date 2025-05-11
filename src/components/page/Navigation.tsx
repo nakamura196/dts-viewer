@@ -38,17 +38,19 @@ export default function NavigationPage({ url, data }: CollectionProps) {
   const members = navigation.member;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 mb-8">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">{t('navigation')}</h1>
-          <div className="flex items-center gap-4">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-8 mb-4 sm:mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 sm:mb-6">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">
+            {t('navigation')}
+          </h1>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
             <div className="text-sm text-gray-500 dark:text-gray-400">
               {members.length} {t('items')}
             </div>
             <a
               href={url}
-              className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 dark:focus:ring-offset-gray-800 transition-colors"
+              className="inline-flex items-center px-3 sm:px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 dark:focus:ring-offset-gray-800 transition-colors"
             >
               {t('jsonDownload')}
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -62,21 +64,21 @@ export default function NavigationPage({ url, data }: CollectionProps) {
             </a>
           </div>
         </div>
-        <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4">
-          <p className="text-gray-600 dark:text-gray-300 break-all">
+        <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3 sm:p-4">
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 break-all">
             {decodeURIComponent(id || '')}
           </p>
         </div>
       </div>
 
       {members.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {members.map((member: ReferenceData, index: number) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 p-6"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 p-4 sm:p-6"
             >
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <div className="flex flex-col">
                   <span className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
                     {t('identifier')}
@@ -95,7 +97,7 @@ export default function NavigationPage({ url, data }: CollectionProps) {
                   <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
                     {t('citeType')}
                   </span>
-                  <span className="text-sm text-gray-900 dark:text-gray-100">
+                  <span className="text-sm text-gray-900 dark:text-gray-100 break-words max-w-[60%] text-right">
                     {member.citeType}
                   </span>
                 </div>
@@ -107,10 +109,10 @@ export default function NavigationPage({ url, data }: CollectionProps) {
                   <span className="text-sm text-gray-900 dark:text-gray-100">{member.level}</span>
                 </div>
 
-                <div className="pt-4">
+                <div className="pt-3 sm:pt-4">
                   <Link
                     href={`${getPassage(member.identifier)}`}
-                    className="w-full inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 transition-colors"
+                    className="w-full inline-flex items-center justify-center px-3 sm:px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 transition-colors"
                   >
                     {t('download')}
                     <svg
