@@ -18,6 +18,16 @@ export type MemberData = {
   download?: string;
 };
 
+const replaceDomain = (domain: string, url: string) => {
+  if (!url) {
+    return '';
+  }
+  if (url.indexOf('?') != -1) {
+    return url.split('?')[0].replace(domain, '') + '?' + url.split('?')[1];
+  }
+  return url.replace(domain, '') as string;
+};
+
 export class Collection {
   static convert(domain: string, data: { [key: string]: unknown }): CollectionData {
     const membersRaw = data.member as { [key: string]: string | number }[];
@@ -29,25 +39,23 @@ export class Collection {
         '@id': memberRaw['@id'] as string,
         '@type': memberRaw['@type'] as string,
         title: memberRaw.title as string,
-        navigation: ((memberRaw['navigation'] as string) || '').replace(domain, '') as string,
-        document: ((memberRaw['document'] as string) || '').replace(domain, '') as string,
-        download: ((memberRaw['download'] as string) || '') as string,
+        navigation: replaceDomain(domain, memberRaw['navigation'] as string),
+        document: replaceDomain(domain, memberRaw['document'] as string),
+        download: replaceDomain(domain, memberRaw['download'] as string),
         totalChildren: (memberRaw['totalChildren'] as number) || 0,
         description: memberRaw['description'] as string,
       };
 
-      // member.totalChildren = member.totalItems as number;
-      // member.totalChildren = ;
       if (memberRaw['totalItems']) {
         member.totalChildren = memberRaw.totalItems as number;
       }
 
       if (memberRaw['dts:references']) {
-        member.navigation = (memberRaw['dts:references'] as string).replace(domain, '') as string;
+        member.navigation = replaceDomain(domain, memberRaw['dts:references'] as string);
       }
 
       if (memberRaw['dts:passage']) {
-        member.document = (memberRaw['dts:passage'] as string).replace(domain, '') as string;
+        member.document = replaceDomain(domain, memberRaw['dts:passage'] as string);
       }
 
       members.push(member);

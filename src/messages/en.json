@@ -3,7 +3,7 @@
     "title": "DTS Viewer",
     "description": "DTS (Distributed Text Services) API to view and search text collections.",
     "itemCount": "Item Count: {count, number}",
-    "viewItems": "View Items",
+    "viewChildCollection": "View Child Collection",
     "viewCollections": "View Collections",
     "noData": "No Data",
     "loading": "Loading...",

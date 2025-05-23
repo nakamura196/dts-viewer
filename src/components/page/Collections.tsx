@@ -13,6 +13,7 @@ interface CollectionProps {
 
 export default function Collections({ base, url, data }: CollectionProps) {
   const t = useTranslations('Common');
+
   const collection = Collection.convert(getDomain(url), data);
 
   const getNavigationUrl = (navigation: string) => {
@@ -107,7 +108,7 @@ export default function Collections({ base, url, data }: CollectionProps) {
                       )}`}
                       className="w-full inline-flex items-center justify-center px-3 sm:px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 transition-colors"
                     >
-                      {t('viewItems')}
+                      {t('viewChildCollection')}
                       <svg
                         className="w-4 h-4 ml-2"
                         fill="none"

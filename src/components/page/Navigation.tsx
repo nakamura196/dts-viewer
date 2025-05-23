@@ -15,6 +15,8 @@ export default function NavigationPage({ url, data }: CollectionProps) {
 
   const navigation = Navigation.convert(getDomain(url), data);
 
+  console.log(navigation);
+
   const getPassage = (identifier: string) => {
     const documentTemplate = navigation.resource.document;
 
