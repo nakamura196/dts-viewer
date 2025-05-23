@@ -11,21 +11,89 @@ interface CollectionProps {
   };
 }
 
+const getNavigationUrl = (navigation: string, url: string, level: number) => {
+  navigation = decodeURIComponent(navigation);
+  /*
+  if (navigation.indexOf('down') != -1) {
+    // navigation = removeVars(navigation) + '&down=1';
+    navigation = removeVars(navigation) + `&down=${level}`;
+  } else {
+    // navigation = removeVars(navigation);
+    navigation = removeVars(navigation) + `&down=${level}`;
+  }
+  */
+  navigation = removeVars(navigation) + `&down=${level}`;
+  const combined = getDomain(url) + navigation;
+  return encodeURIComponent(combined);
+};
+
+const Nav = ({ member, base, url }: { member: MemberData; base: string; url: string }) => {
+  const citationTrees = member.citationTrees || [];
+  const t = useTranslations('Common');
+
+  const items = [];
+
+  if (citationTrees.length > 0) {
+    for (const citationTree of citationTrees) {
+      const citeStructures1 = citationTree.citeStructure;
+      for (const citeStructure1 of citeStructures1) {
+        items.push({
+          level: 1,
+          citeType: (citeStructure1 as { citeType: string })['citeType'],
+        });
+
+        const citeStructures2 = (citeStructure1 as { citeStructure: unknown[] })[
+          'citeStructure'
+        ] as unknown as {
+          citeType: string;
+        }[];
+
+        for (const citeStructure2 of citeStructures2) {
+          items.push({
+            level: 2,
+            citeType: citeStructure2['citeType'],
+          });
+        }
+      }
+    }
+  } else {
+    items.push({
+      level: 1,
+      // citeType: t('navigation'),
+    });
+  }
+
+  /*
+  return (
+    <Link
+      href={`/?base=${base}&url=${getNavigationUrl(member.navigation || '')}`}
+      className="w-full inline-flex items-center justify-center px-3 sm:px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 transition-colors"
+    >
+      {t('navigation')}
+    </Link>
+  );
+  */
+
+  return (
+    <>
+      {items.map((item, index) => (
+        <Link
+          key={index}
+          href={`/?base=${base}&url=${getNavigationUrl(member.navigation || '', url, item.level)}`}
+          className="w-full inline-flex items-center justify-center px-3 sm:px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 transition-colors"
+        >
+          {t('navigation')} {t('level')}: {item.level} {item.citeType && t('citeType')}:{' '}
+          {item.citeType}
+        </Link>
+      ))}
+    </>
+  );
+};
+
 export default function Collections({ base, url, data }: CollectionProps) {
   const t = useTranslations('Common');
 
   const collection = Collection.convert(getDomain(url), data);
-
-  const getNavigationUrl = (navigation: string) => {
-    navigation = decodeURIComponent(navigation);
-    if (navigation.indexOf('down') != -1) {
-      navigation = removeVars(navigation) + '&down=1';
-    } else {
-      navigation = removeVars(navigation);
-    }
-    const combined = getDomain(url) + navigation;
-    return encodeURIComponent(combined);
-  };
 
   const getDownloadUrl = (member: MemberData) => {
     if (member.download) {
@@ -148,27 +216,7 @@ export default function Collections({ base, url, data }: CollectionProps) {
                       </svg>
                     </a>
 
-                    {member.navigation && (
-                      <Link
-                        href={`/?base=${base}&url=${getNavigationUrl(member.navigation || '')}`}
-                        className="w-full inline-flex items-center justify-center px-3 sm:px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 transition-colors"
-                      >
-                        {t('navigation')}
-                        <svg
-                          className="w-4 h-4 ml-2"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M14 5l7 7m0 0l-7 7m7-7H3"
-                          />
-                        </svg>
-                      </Link>
-                    )}
+                    {member.navigation && <Nav member={member} base={base} url={url} />}
                   </div>
                 )}
               </div>

@@ -7,6 +7,11 @@ export type CollectionData = {
   description?: string;
 };
 
+export type CitationTree = {
+  '@type': 'CitationTree';
+  citeStructure: unknown[];
+};
+
 export type MemberData = {
   '@id': string;
   '@type': string;
@@ -16,6 +21,7 @@ export type MemberData = {
   navigation?: string;
   document?: string;
   download?: string;
+  citationTrees?: CitationTree[];
 };
 
 const replaceDomain = (domain: string, url: string) => {
@@ -30,7 +36,7 @@ const replaceDomain = (domain: string, url: string) => {
 
 export class Collection {
   static convert(domain: string, data: { [key: string]: unknown }): CollectionData {
-    const membersRaw = data.member as { [key: string]: string | number }[];
+    const membersRaw = data.member as { [key: string]: string | number | CitationTree }[];
 
     const members: MemberData[] = [];
 
@@ -44,6 +50,7 @@ export class Collection {
         download: replaceDomain(domain, memberRaw['download'] as string),
         totalChildren: (memberRaw['totalChildren'] as number) || 0,
         description: memberRaw['description'] as string,
+        citationTrees: memberRaw['citationTrees'] as unknown as CitationTree[],
       };
 
       if (memberRaw['totalItems']) {
