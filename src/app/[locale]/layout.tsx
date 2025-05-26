@@ -8,14 +8,39 @@ import './globals.css';
 import Footer from '@/components/layout/Footer';
 import { ThemeProvider } from 'next-themes';
 import { Inter } from 'next/font/google';
+import { Metadata } from 'next';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = async () => {
-  return {
-    title: 'DTS Viewer',
-    description: 'DTS Viewer',
-  };
+const title = 'DTS Viewer';
+const description =
+  'Application for viewing and searching text collections using DTS (Distributed Text Services) API.';
+const twitter = '@satoru196';
+const url = 'https://dts-viewer.vercel.app';
+const imageUrl = `${url}/home.webp`;
+
+export const metadata: Metadata = {
+  metadataBase: new URL(url),
+  title: title,
+  description: description,
+  keywords: ['TEI', 'XML', 'Next.js', 'Vercel'],
+  authors: [{ name: 'Satoru Nakamura', url: 'https://researchmap.jp/nakamura.satoru' }],
+  openGraph: {
+    title: title,
+    description: description,
+    url: url,
+    type: 'website',
+    siteName: title,
+    images: imageUrl,
+  },
+  twitter: {
+    card: 'summary',
+    site: twitter,
+    creator: twitter,
+    title: title,
+    description: description,
+    images: imageUrl,
+  },
 };
 
 type LayoutProps = {

@@ -1,7 +1,7 @@
 {
   "Common": {
     "title": "DTS Viewer",
-    "description": "DTS (Distributed Text Services) API to view and search text collections.",
+    "description": "Application for viewing and searching text collections using DTS (Distributed Text Services) API.",
     "itemCount": "Item Count: {count, number}",
     "viewChildCollection": "View Child Collection",
     "viewCollections": "View Collections",
