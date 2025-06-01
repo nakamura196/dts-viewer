@@ -1,7 +1,14 @@
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { getDomain, removeVars } from '@/lib/utils';
-import { Collection, MemberData } from '@/lib/collection';
+import { Collection, MemberData, CollectionData } from '@/lib/collection';
+
+interface CollectionView {
+  first?: string;
+  previous?: string;
+  next?: string;
+  last?: string;
+}
 
 interface CollectionProps {
   base: string;
@@ -93,7 +100,9 @@ const Nav = ({ member, base, url }: { member: MemberData; base: string; url: str
 export default function Collections({ base, url, data }: CollectionProps) {
   const t = useTranslations('Common');
 
-  const collection = Collection.convert(getDomain(url), data);
+  const collection = Collection.convert(getDomain(url), data) as CollectionData & {
+    view?: CollectionView;
+  };
 
   const getDownloadUrl = (member: MemberData) => {
     if (member.download) {
@@ -146,6 +155,53 @@ export default function Collections({ base, url, data }: CollectionProps) {
         )}
       </div>
 
+      {collection.view && (
+        <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3 sm:p-4 mb-4">
+          <div className="flex justify-center space-x-2">
+            {collection.view.first && (
+              <Link
+                href={`/?base=${base}&url=${encodeURIComponent(
+                  getDomain(base) + collection.view.first
+                )}`}
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+              >
+                {t('first')}
+              </Link>
+            )}
+            {collection.view.previous && (
+              <Link
+                href={`/?base=${base}&url=${encodeURIComponent(
+                  getDomain(base) + collection.view.previous
+                )}`}
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+              >
+                {t('previous')}
+              </Link>
+            )}
+            {collection.view.next && (
+              <Link
+                href={`/?base=${base}&url=${encodeURIComponent(
+                  getDomain(base) + collection.view.next
+                )}`}
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+              >
+                {t('next')}
+              </Link>
+            )}
+            {collection.view.last && (
+              <Link
+                href={`/?base=${base}&url=${encodeURIComponent(
+                  getDomain(base) + collection.view.last
+                )}`}
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+              >
+                {t('last')}
+              </Link>
+            )}
+          </div>
+        </div>
+      )}
+
       {collection.member && collection.member.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {collection.member.map((member: MemberData) => (
@@ -165,11 +221,13 @@ export default function Collections({ base, url, data }: CollectionProps) {
                   )}
                 </div>
 
-                {member.totalChildren !== undefined && member.totalChildren > 0 && (
+                {member['@type'] === 'Collection' && (
                   <div className="pt-2">
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-3 sm:mb-4">
-                      {t('itemCount', { count: member.totalChildren })}
-                    </p>
+                    {member.totalChildren !== undefined && member.totalChildren > 0 && (
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-3 sm:mb-4">
+                        {t('itemCount', { count: member.totalChildren })}
+                      </p>
+                    )}
                     <Link
                       href={`/?base=${base}&url=${encodeURIComponent(
                         `${url.split('?')[0]}?id=${member['@id']}`
@@ -194,7 +252,7 @@ export default function Collections({ base, url, data }: CollectionProps) {
                   </div>
                 )}
 
-                {member.totalChildren === 0 && (
+                {member['@type'] === 'Resource' && (
                   <div className="pt-2 space-y-2">
                     <a
                       href={getDownloadUrl(member)}

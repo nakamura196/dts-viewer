@@ -28,6 +28,10 @@
     "citeType": "Cite Type",
     "level": "Level",
     "items": "Items",
-    "jsonDownload": "JSON Download"
+    "jsonDownload": "JSON Download",
+    "first": "First",
+    "previous": "Previous",
+    "next": "Next",
+    "last": "Last"
   }
 }

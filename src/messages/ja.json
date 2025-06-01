@@ -28,6 +28,10 @@
     "citeType": "引用タイプ",
     "level": "レベル",
     "items": "アイテム",
-    "jsonDownload": "JSONダウンロード"
+    "jsonDownload": "JSONダウンロード",
+    "first": "最初",
+    "previous": "前",
+    "next": "次",
+    "last": "最後"
   }
 }

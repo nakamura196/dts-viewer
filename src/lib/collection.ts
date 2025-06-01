@@ -5,6 +5,7 @@ export type CollectionData = {
   title: string;
   member: MemberData[];
   description?: string;
+  view?: unknown;
 };
 
 export type CitationTree = {
@@ -75,6 +76,7 @@ export class Collection {
       title: data.title as string,
       description: data.description as string,
       member: members,
+      view: data['view'] as unknown,
     };
 
     return result;
