@@ -161,7 +161,7 @@ export default function Collections({ base, url, data }: CollectionProps) {
             {collection.view.first && (
               <Link
                 href={`/?base=${base}&url=${encodeURIComponent(
-                  getDomain(base) + collection.view.first
+                  getDomain(url) + collection.view.first
                 )}`}
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
               >
@@ -171,7 +171,7 @@ export default function Collections({ base, url, data }: CollectionProps) {
             {collection.view.previous && (
               <Link
                 href={`/?base=${base}&url=${encodeURIComponent(
-                  getDomain(base) + collection.view.previous
+                  getDomain(url) + collection.view.previous
                 )}`}
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
               >
@@ -181,7 +181,7 @@ export default function Collections({ base, url, data }: CollectionProps) {
             {collection.view.next && (
               <Link
                 href={`/?base=${base}&url=${encodeURIComponent(
-                  getDomain(base) + collection.view.next
+                  getDomain(url) + collection.view.next
                 )}`}
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
               >
@@ -191,7 +191,7 @@ export default function Collections({ base, url, data }: CollectionProps) {
             {collection.view.last && (
               <Link
                 href={`/?base=${base}&url=${encodeURIComponent(
-                  getDomain(base) + collection.view.last
+                  getDomain(url) + collection.view.last
                 )}`}
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
               >
