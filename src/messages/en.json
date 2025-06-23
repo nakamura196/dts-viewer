@@ -32,6 +32,26 @@
     "first": "First",
     "previous": "Previous",
     "next": "Next",
-    "last": "Last"
+    "last": "Last",
+    "metadata": "Metadata",
+    "creator": "Creator",
+    "title": "Title",
+    "description": "Description",
+    "license": "License",
+    "publisher": "Publisher",
+    "date": "Date",
+    "type": "Type",
+    "format": "Format",
+    "source": "Source",
+    "language": "Language",
+    "relation": "Relation",
+    "coverage": "Coverage",
+    "rights": "Rights",
+    "contributor": "Contributor",
+    "subject": "Subject",
+    "viewResourceDetail": "View Resource Detail",
+    "resourceDetails": "Resource Details",
+    "citationStructure": "Citation Structure",
+    "backToCollection": "Back to Collection"
   }
 }

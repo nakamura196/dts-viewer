@@ -6,13 +6,14 @@ import Home from '@/components/page/Home';
 import { useEffect } from 'react';
 import Collections from '@/components/page/Collections';
 import Navigation from '@/components/page/Navigation';
-import { CollectionData } from '@/lib/collection';
+import Resource from '@/components/page/Resource';
+import { CollectionData, MemberData } from '@/lib/collection';
 import { NavigationData } from '@/lib/navigation';
 import { useTranslations } from 'next-intl';
 export function Main({ base, url }: { base: string; url: string }) {
   const [component, setComponent] = useState<React.ReactNode>(null);
   const [loading, setLoading] = useState(true);
-  const [, setData] = useState<CollectionData | NavigationData | null>(null);
+  const [, setData] = useState<CollectionData | NavigationData | MemberData | null>(null);
   const t = useTranslations('Common');
   useEffect(() => {
     setLoading(true);
@@ -25,6 +26,8 @@ export function Main({ base, url }: { base: string; url: string }) {
 
         if (type === 'Collection') {
           setComponent(<Collections base={base} url={url} data={responseData} />);
+        } else if (type === 'Resource') {
+          setComponent(<Resource base={base} url={url} data={responseData} />);
         } else if (id.indexOf('navigation') !== -1) {
           setComponent(<Navigation base={base} url={url} data={responseData} />);
         }

@@ -1,3 +1,28 @@
+export type DublinCoreValue = 
+  | string 
+  | string[]
+  | { lang: string; value: string }[]
+  | { lang: string; value: string };
+
+export type DublinCore = {
+  creator?: DublinCoreValue;
+  title?: DublinCoreValue;
+  description?: DublinCoreValue;
+  license?: DublinCoreValue;
+  publisher?: DublinCoreValue;
+  date?: DublinCoreValue;
+  type?: DublinCoreValue;
+  format?: DublinCoreValue;
+  identifier?: DublinCoreValue;
+  source?: DublinCoreValue;
+  language?: DublinCoreValue;
+  relation?: DublinCoreValue;
+  coverage?: DublinCoreValue;
+  rights?: DublinCoreValue;
+  contributor?: DublinCoreValue;
+  subject?: DublinCoreValue;
+};
+
 export type CollectionData = {
   '@id': string;
   '@type': string;
@@ -6,6 +31,7 @@ export type CollectionData = {
   member: MemberData[];
   description?: string;
   view?: unknown;
+  dublinCore?: DublinCore;
 };
 
 export type CitationTree = {
@@ -23,6 +49,7 @@ export type MemberData = {
   document?: string;
   download?: string;
   citationTrees?: CitationTree[];
+  dublinCore?: DublinCore;
 };
 
 const replaceDomain = (domain: string, url: string) => {
@@ -52,6 +79,7 @@ export class Collection {
         totalChildren: (memberRaw['totalChildren'] as number) || 0,
         description: memberRaw['description'] as string,
         citationTrees: memberRaw['citationTrees'] as unknown as CitationTree[],
+        dublinCore: memberRaw['dublinCore'] as DublinCore,
       };
 
       if (memberRaw['totalItems']) {
@@ -77,6 +105,7 @@ export class Collection {
       description: data.description as string,
       member: members,
       view: data['view'] as unknown,
+      dublinCore: data['dublinCore'] as DublinCore,
     };
 
     return result;
