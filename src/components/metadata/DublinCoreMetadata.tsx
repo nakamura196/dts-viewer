@@ -85,9 +85,10 @@ export default function DublinCoreMetadata({ dublinCore, className = '' }: Dubli
     { key: 'subject', label: t('subject') },
   ] as const;
 
-  const hasMetadata = fields.some(field => 
-    dublinCore[field.key] && formatValue(dublinCore[field.key])
-  );
+  const hasMetadata = fields.some(field => {
+    const value = dublinCore[field.key];
+    return value && formatValue(value);
+  });
 
   if (!hasMetadata) {
     return null;
@@ -101,8 +102,9 @@ export default function DublinCoreMetadata({ dublinCore, className = '' }: Dubli
       <dl className="space-y-2">
         {fields.map(field => {
           const value = dublinCore[field.key];
-          const formattedValue = formatValue(value);
+          if (!value) return null;
           
+          const formattedValue = formatValue(value);
           if (!formattedValue) return null;
           
           return (

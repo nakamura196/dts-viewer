@@ -8,7 +8,7 @@ interface ResourceProps {
   base: string;
   url: string;
   data: MemberData & {
-    [key: string]: any;
+    [key: string]: unknown;
   };
 }
 
