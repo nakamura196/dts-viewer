@@ -68,8 +68,8 @@ export default function DublinCoreMetadata({ dublinCore, className = '' }: Dubli
   
   const fields = [
     { key: 'creator', label: t('creator') },
-    { key: 'title', label: t('title') },
-    { key: 'description', label: t('description') },
+    { key: 'title', label: t('titleField') },
+    { key: 'description', label: t('descriptionField') },
     { key: 'license', label: t('license') },
     { key: 'publisher', label: t('publisher') },
     { key: 'date', label: t('date') },

@@ -18,8 +18,39 @@ export default async function About({ params }: { params: Promise<{ locale: stri
 
   if (!node) {
     return (
-      <div className="container mx-auto px-4 py-12">
-        <p className="text-center text-gray-600">{t('comingSoon')}</p>
+      <div className="container mx-auto px-4 py-12 max-w-4xl">
+        <article className="prose prose-lg max-w-none">
+          <h1 className="text-4xl font-bold text-gray-900 mb-8">{t('aboutTitle')}</h1>
+          
+          <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+            {t('aboutDescription')}
+          </p>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('whatIsDts')}</h2>
+            <p className="text-gray-700 leading-relaxed">
+              {t('dtsDescription')}
+            </p>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('features')}</h2>
+            <ul className="list-disc pl-6 space-y-3">
+              <li className="text-gray-700">{t('feature1')}</li>
+              <li className="text-gray-700">{t('feature2')}</li>
+              <li className="text-gray-700">{t('feature3')}</li>
+              <li className="text-gray-700">{t('feature4')}</li>
+              <li className="text-gray-700">{t('feature5')}</li>
+            </ul>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('gettingStarted')}</h2>
+            <p className="text-gray-700 leading-relaxed">
+              {t('gettingStartedDescription')}
+            </p>
+          </section>
+        </article>
       </div>
     );
   }

@@ -15,6 +15,7 @@ interface ResourceProps {
 export default function Resource({ base, url, data }: ResourceProps) {
   const t = useTranslations('Common');
 
+
   const getDownloadUrl = (resource: MemberData) => {
     if (resource.download) {
       return resource.download;
