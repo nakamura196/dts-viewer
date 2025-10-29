@@ -56,6 +56,10 @@ const replaceDomain = (domain: string, url: string) => {
   if (!url) {
     return '';
   }
+  // 絶対URLの場合はそのまま返す
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    return url;
+  }
   if (url.indexOf('?') != -1) {
     return url.split('?')[0].replace(domain, '') + '?' + url.split('?')[1];
   }
