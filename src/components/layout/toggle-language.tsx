@@ -1,12 +1,13 @@
 'use client';
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { usePathname } from 'next/navigation';
 import { useLocale } from 'next-intl';
 export const ToggleLanguage = () => {
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const t = useTranslations('Common');
 
   const locale = useLocale();
@@ -14,7 +15,10 @@ export const ToggleLanguage = () => {
   const switchLanguage = (newLocale: string) => {
     // 現在のパスから言語部分を除去して新しい言語を追加
     const newPath = pathname.replace(/^\/[^\/]+/, '');
-    router.push(`/${newLocale}${newPath}`);
+    // クエリパラメータを引き継ぐ
+    const queryString = searchParams.toString();
+    const fullPath = queryString ? `/${newLocale}${newPath}?${queryString}` : `/${newLocale}${newPath}`;
+    router.push(fullPath);
   };
 
   return (
