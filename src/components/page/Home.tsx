@@ -17,8 +17,6 @@ export default function Home() {
       {/* Intro Video Section */}
       <Video />
 
-      {/* About Section */}
-
       <div className="mb-8">
         <UrlForm url={url} />
       </div>

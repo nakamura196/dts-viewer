@@ -49,7 +49,7 @@ export default function Example({ setUrl }: { setUrl: (url: string) => void }) {
               className="block border border-[var(--ds-border)] rounded-md hover:border-[var(--ds-primary)] transition-colors bg-[var(--ds-surface)] cursor-pointer"
             >
               <div className="p-4">
-                <div className="mt-2 text-lg text-[var(--ds-fg)] hover:text-[var(--ds-primary)] transition-colors">
+                <div className="text-lg text-[var(--ds-fg)] hover:text-[var(--ds-primary)] transition-colors">
                   {item.label}
                 </div>
               </div>

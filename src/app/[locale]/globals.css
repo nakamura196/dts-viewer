@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import '@nakamura196/react-ui/styles.css';
+@plugin "@tailwindcss/typography";
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* DS コンポーネント内の Tailwind クラスを検出させる */
@@ -9,6 +10,13 @@
 :root {
   --ds-font-sans: var(--font-noto-sans), 'Noto Sans JP', ui-sans-serif, system-ui, sans-serif;
   --ds-font-serif: var(--font-noto-serif), 'Noto Serif JP', ui-serif, Georgia, serif;
+  /* 薄い銀杏イエロー(secondary)の帯。Structured 準拠で淡く。 */
+  --ds-surface-accent: #fff6d9;
+}
+
+.dark {
+  /* ダークでは黄は映えないので控えめな紺の帯 */
+  --ds-surface-accent: #04263d;
 }
 
 body {

@@ -60,12 +60,12 @@ export default function Resource({ base, url, data }: ResourceProps) {
         const citeType = (cs as { citeType: string }).citeType;
         const children = (cs as { citeStructure?: unknown[] }).citeStructure;
         return (
-          <div key={index} className={level > 1 ? 'ml-4 border-l-2 border-[var(--ds-border)] pl-2' : ''}>
+          <div key={index} className={level > 1 ? 'ml-3 border-l-2 border-[var(--ds-accent)] pl-3' : ''}>
             <Link
               href={`/?base=${base}&url=${getNavigationUrl(resource.navigation || '', url, level, treeIdentifier)}`}
-              className={buttonClass('secondary', 'sm', 'w-full justify-start')}
+              className="inline-flex items-center gap-2 rounded-md px-2 py-1 text-sm font-medium text-[var(--ds-primary)] transition-colors hover:bg-[var(--ds-surface-2)]"
             >
-              <span className="text-[var(--ds-fg-muted)] mr-2">{level > 1 ? '└' : '▸'}</span>
+              <span className="text-[var(--ds-accent)]">{level > 1 ? '└' : '▸'}</span>
               {citeType}
             </Link>
             {children && (
@@ -135,7 +135,7 @@ export default function Resource({ base, url, data }: ResourceProps) {
         <div className="flex flex-col sm:flex-row gap-4 mb-6">
           <a
             href={getDownloadUrl(data)}
-            className={buttonClass('primary', 'md')}
+            className={buttonClass('secondary', 'md')}
           >
             {t('download')}
             <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
