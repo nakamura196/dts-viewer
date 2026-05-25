@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+@import '@nakamura196/react-ui/styles.css';
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* DS コンポーネント内の Tailwind クラスを検出させる */
+@source '../../../node_modules/@nakamura196/react-ui/src';
+
+/* DS のフォント変数を next/font で読み込んだ Noto に接続 */
+:root {
+  --ds-font-sans: var(--font-noto-sans), 'Noto Sans JP', ui-sans-serif, system-ui, sans-serif;
+  --ds-font-serif: var(--font-noto-serif), 'Noto Serif JP', ui-serif, Georgia, serif;
+}
+
+body {
+  font-family: var(--ds-font-sans);
+}

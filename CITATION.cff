@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "DTS Viewer"
+abstract: "A web application for browsing digital text collections published via the DTS (Distributed Text Services) API."
+authors:
+  - family-names: Nakamura
+    given-names: Satoru
+    orcid: https://orcid.org/0000-0001-8245-7925
+    website: https://researchmap.jp/nakamura.satoru?lang=en
+repository-code: https://github.com/nakamura196/dts-viewer
+url: https://dts-viewer.vercel.app/
+license: MIT
+keywords:
+  - DTS
+  - Distributed Text Services
+  - digital humanities
+  - TEI
