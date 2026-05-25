@@ -2,7 +2,7 @@ import { routing } from '@/i18n/routing';
 import { setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { getDoc } from '@/lib/content';
-import { MarkdownContent } from '@/components/MarkdownContent';
+import { MarkdownContent } from '@nakamura196/react-ui';
 
 // SSG対応
 export function generateStaticParams() {

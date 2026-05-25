@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nakamura196/react-ui": "github:nakamura196/react-ui#v0.1.0",
+    "@nakamura196/react-ui": "github:nakamura196/react-ui#v0.2.0",
     "@next/third-parties": "^15.5.12",
     "@tailwindcss/postcss": "^4.1.6",
     "@tailwindcss/typography": "^0.5.16",
