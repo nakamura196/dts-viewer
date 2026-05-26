@@ -21,7 +21,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          node-version: 20
+          # npm 11 でロックされた package-lock.json と整合するよう Node 24 を使う
+          # (ci.yml と同じ。Node 20 だと "Missing: @swc/helpers@... from lock file"
+          # で npm ci が失敗する)。
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
