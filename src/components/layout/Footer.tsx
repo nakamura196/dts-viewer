@@ -52,6 +52,12 @@ export default async function Footer() {
               href: 'https://github.com/nakamura196/dts-viewer',
               external: true,
             },
+            {
+              // nakamura196 が公開している他のツール一覧 (academicpages portfolio)
+              label: ja ? 'nakamura196 の他のツール' : 'Other tools by nakamura196',
+              href: 'https://nakamura196.github.io/portfolio/',
+              external: true,
+            },
           ],
         },
       ]}

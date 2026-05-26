@@ -19,6 +19,10 @@ export default function NewsSection() {
             : 'https://www.youtube.com/watch?v=uypWo_qEcmA',
           external: true,
         },
+        {
+          date: '2026-05-25',
+          title: ja ? 'DTS Viewer を公開しました' : 'Released DTS Viewer',
+        },
       ]}
     />
   );

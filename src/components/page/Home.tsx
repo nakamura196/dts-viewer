@@ -21,10 +21,10 @@ export default function Home() {
         <UrlForm url={url} />
       </div>
 
+      <Example setUrl={setUrl} />
+
       {/* News Section */}
       <NewsSection />
-
-      <Example setUrl={setUrl} />
     </main>
   );
 }
