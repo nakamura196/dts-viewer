@@ -25,17 +25,19 @@ const notoSerif = Noto_Serif_JP({
 });
 
 // Google Analytics 4 の測定ID（公開値: クライアント JS に出るため秘匿不要）。
-// Vercel 等の NEXT_PUBLIC_GA_ID で上書き可能。dev では計測しない（本番ビルドのみ有効）。
+// OSS としてフォークされても maintainer の GA に意図せず計測を送らないよう、
+// fallback は持たない。デプロイ者が repo Variables に NEXT_PUBLIC_GA_ID を
+// 設定したときだけ有効化される (未設定なら GoogleAnalytics は描画されない)。
 const gaId =
-  process.env.NODE_ENV === 'production'
-    ? (process.env.NEXT_PUBLIC_GA_ID ?? 'G-905D2TFQX0')
-    : undefined;
+  process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_GA_ID : undefined;
 
 const title = 'DTS Viewer';
 const description =
   'Application for viewing and searching text collections using DTS (Distributed Text Services) API.';
 const twitter = '@satoru196';
-const url = 'https://dts-viewer.vercel.app';
+// SEO 統合: canonical を GH Pages に固定。Vercel の旧 URL
+// (dts-viewer.vercel.app) は vercel.json で 301 redirect する。
+const url = 'https://nakamura196.github.io/dts-viewer';
 const imageUrl = `${url}/home.webp`;
 
 export const metadata: Metadata = {

@@ -91,6 +91,33 @@ DTS Viewer は、**DTS（Distributed Text Services）API 標準**で公開され
 
 ---
 
+## Deployment / デプロイ
+
+### GitHub Pages (automated via Actions)
+
+`.github/workflows/deploy-pages.yml` ワークフローが `NEXT_PUBLIC_BASE_PATH=/dts-viewer`
+を渡して `out/` を生成し GitHub Pages にアップロードします。リポジトリ側で
+**Settings → Pages → Source: "GitHub Actions"** を一度選択するだけで `main` へ
+push するたびに自動デプロイされます。
+
+### Optional: Google Analytics
+
+本リポジトリには Measurement ID をハードコードしていないため、フォークしても
+意図せず元 maintainer の GA に計測が送信されることはありません。各自のデプロイで
+GA4 を有効化するには:
+
+1. GA4 プロパティを作成して Measurement ID (`G-XXXXXXXXXX`) を取得
+2. **GitHub Pages の場合**: Repository → **Settings → Secrets and variables →
+   Actions → Variables** タブ → New repository variable
+   `NEXT_PUBLIC_GA_ID` = `G-XXXXXXXXXX`。次回 push でビルドが走り GA 有効化
+3. **Vercel の場合**: Project → **Settings → Environment Variables** →
+   `NEXT_PUBLIC_GA_ID` = `G-XXXXXXXXXX` (Production scope)
+
+`src/app/[locale]/layout.tsx` がビルド時に `process.env.NEXT_PUBLIC_GA_ID` を読み、
+値があるときだけ `@next/third-parties/google` の `<GoogleAnalytics>` を描画します。
+
+---
+
 ## Contributing / 貢献
 
 Issues and pull requests are welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md) and our [Code of Conduct](./CODE_OF_CONDUCT.md).
