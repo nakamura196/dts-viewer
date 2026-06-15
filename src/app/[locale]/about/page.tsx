@@ -3,6 +3,7 @@ import { setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { getDoc } from '@/lib/content';
 import { MarkdownContent } from '@nakamura196/react-ui';
+import { alternatesFor } from '@/config/site';
 
 // SSG対応
 export function generateStaticParams() {
@@ -15,7 +16,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return { title: locale === 'en' ? 'About' : 'このサイトについて' };
+  return {
+    title: locale === 'en' ? 'About' : 'このサイトについて',
+    alternates: alternatesFor(locale, 'about'),
+  };
 }
 
 export default async function About({ params }: { params: Promise<{ locale: string }> }) {

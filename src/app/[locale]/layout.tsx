@@ -10,6 +10,7 @@ import { ThemeProvider } from 'next-themes';
 import { Noto_Sans_JP, Noto_Serif_JP } from 'next/font/google';
 import { Metadata } from 'next';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { siteUrl } from '@/config/site';
 
 // 東大VIの指定書体（無料の代替）: 本文=Noto Sans JP / 見出し=Noto Serif JP
 const notoSans = Noto_Sans_JP({
@@ -35,9 +36,9 @@ const title = 'DTS Viewer';
 const description =
   'Application for viewing and searching text collections using DTS (Distributed Text Services) API.';
 const twitter = '@satoru196';
-// SEO 統合: canonical を GH Pages に固定。Vercel の旧 URL
+// SEO 統合: canonical を GH Pages に固定 (siteUrl)。Vercel の旧 URL
 // (dts-viewer.vercel.app) は vercel.json で 301 redirect する。
-const url = 'https://nakamura196.github.io/dts-viewer';
+const url = siteUrl;
 const imageUrl = `${url}/home.webp`;
 
 export const metadata: Metadata = {
