@@ -1,7 +1,7 @@
 import React from 'react';
 import { buttonClass } from '@nakamura196/react-ui';
 import { useTranslations } from 'next-intl';
-import { getDomain, removeVars, extractVariables } from '@/lib/utils';
+import { getDomain, resolveUrl, removeVars, extractVariables } from '@/lib/utils';
 import { Navigation, ReferenceData } from '@/lib/navigation';
 
 interface CollectionProps {
@@ -18,7 +18,7 @@ export default function NavigationPage({ url, data }: CollectionProps) {
   const getPassage = (identifier: string) => {
     const documentTemplate = navigation.resource.document;
 
-    let result = getDomain(url) + removeVars(documentTemplate);
+    let result = resolveUrl(url, removeVars(documentTemplate));
 
     const variables = extractVariables(documentTemplate);
 

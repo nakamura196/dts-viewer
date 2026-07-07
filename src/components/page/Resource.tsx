@@ -1,7 +1,7 @@
 import { buttonClass } from '@nakamura196/react-ui';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
-import { getDomain, removeVars } from '@/lib/utils';
+import { resolveUrl, removeVars, buildNavigationUrl } from '@/lib/utils';
 import { MemberData } from '@/lib/collection';
 import DublinCoreMetadata from '@/components/metadata/DublinCoreMetadata';
 
@@ -22,20 +22,12 @@ export default function Resource({ base, url, data }: ResourceProps) {
       return resource.download;
     }
     if (resource.document) {
-      return getDomain(url) + removeVars(resource.document);
+      return resolveUrl(url, removeVars(resource.document));
     }
     return '#';
   };
 
-  const getNavigationUrl = (navigation: string, url: string, level: number = 1, tree?: string) => {
-    navigation = decodeURIComponent(navigation);
-    navigation = removeVars(navigation) + `&down=${level}`;
-    if (tree) {
-      navigation += `&tree=${tree}`;
-    }
-    const combined = getDomain(url) + navigation;
-    return encodeURIComponent(combined);
-  };
+  const getNavigationUrl = buildNavigationUrl;
 
   const Nav = ({ resource }: { resource: MemberData }) => {
     const citationTrees = resource.citationTrees || [];

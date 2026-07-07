@@ -12,6 +12,12 @@ export default function NewsSection() {
       heading={ja ? 'お知らせ' : 'News'}
       items={[
         {
+          date: '2026-07-08',
+          title: ja
+            ? '絶対URLを返す DTS サーバに対応しました'
+            : 'Added support for DTS servers that return absolute URLs',
+        },
+        {
           date: '2026-05-25',
           title: ja ? '解説動画を公開しました' : 'Published a tutorial video',
           href: ja

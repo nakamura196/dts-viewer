@@ -2,7 +2,7 @@ import React from 'react';
 import { buttonClass } from '@nakamura196/react-ui';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
-import { getDomain, removeVars } from '@/lib/utils';
+import { getDomain, resolveUrl, removeVars, buildNavigationUrl } from '@/lib/utils';
 import { Collection, MemberData, CollectionData } from '@/lib/collection';
 import DublinCoreMetadata from '@/components/metadata/DublinCoreMetadata';
 
@@ -21,15 +21,7 @@ interface CollectionProps {
   };
 }
 
-const getNavigationUrl = (navigation: string, url: string, level: number, tree?: string) => {
-  navigation = decodeURIComponent(navigation);
-  navigation = removeVars(navigation) + `&down=${level}`;
-  if (tree) {
-    navigation += `&tree=${tree}`;
-  }
-  const combined = getDomain(url) + navigation;
-  return encodeURIComponent(combined);
-};
+const getNavigationUrl = buildNavigationUrl;
 
 const Nav = ({ member, base, url }: { member: MemberData; base: string; url: string }) => {
   const citationTrees = member.citationTrees || [];
@@ -98,7 +90,7 @@ export default function Collections({ base, url, data }: CollectionProps) {
     if (member.download) {
       return member.download;
     }
-    const downloadUrl = getDomain(url) + removeVars(member.document || '');
+    const downloadUrl = resolveUrl(url, removeVars(member.document || ''));
     return downloadUrl;
   };
 
@@ -159,7 +151,7 @@ export default function Collections({ base, url, data }: CollectionProps) {
             {collection.view.first && (
               <Link
                 href={`/?base=${base}&url=${encodeURIComponent(
-                  getDomain(url) + collection.view.first
+                  resolveUrl(url, collection.view.first)
                 )}`}
                 className={buttonClass('primary', 'sm')}
               >
@@ -169,7 +161,7 @@ export default function Collections({ base, url, data }: CollectionProps) {
             {collection.view.previous && (
               <Link
                 href={`/?base=${base}&url=${encodeURIComponent(
-                  getDomain(url) + collection.view.previous
+                  resolveUrl(url, collection.view.previous)
                 )}`}
                 className={buttonClass('primary', 'sm')}
               >
@@ -179,7 +171,7 @@ export default function Collections({ base, url, data }: CollectionProps) {
             {collection.view.next && (
               <Link
                 href={`/?base=${base}&url=${encodeURIComponent(
-                  getDomain(url) + collection.view.next
+                  resolveUrl(url, collection.view.next)
                 )}`}
                 className={buttonClass('primary', 'sm')}
               >
@@ -189,7 +181,7 @@ export default function Collections({ base, url, data }: CollectionProps) {
             {collection.view.last && (
               <Link
                 href={`/?base=${base}&url=${encodeURIComponent(
-                  getDomain(url) + collection.view.last
+                  resolveUrl(url, collection.view.last)
                 )}`}
                 className={buttonClass('primary', 'sm')}
               >
