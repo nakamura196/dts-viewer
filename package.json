@@ -12,11 +12,11 @@
   },
   "dependencies": {
     "@nakamura196/react-ui": "github:nakamura196/react-ui#v0.2.0",
-    "@next/third-parties": "^15.5.12",
+    "@next/third-parties": "^16.3.0",
     "@tailwindcss/postcss": "^4.1.6",
     "@tailwindcss/typography": "^0.5.16",
     "jeasings": "^0.0.16",
-    "next": "^15.5.22",
+    "next": "^16.3.0",
     "next-intl": "^4.9.2",
     "next-themes": "^0.4.6",
     "react": "^19.1.0",
@@ -30,7 +30,7 @@
     "@types/react": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
-    "postcss": "^8.5.18",
+    "postcss": "^8.5.26",
     "tailwindcss": "^4.1.6",
     "typescript": "^5",
     "vitest": "^4.1.10"
