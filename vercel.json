@@ -6,7 +6,7 @@
   "redirects": [
     {
       "source": "/:rest(.*)",
-      "destination": "https://nakamura196.github.io/dts-viewer/:rest",
+      "destination": "https://dtsview.ldas.jp/:rest",
       "permanent": true
     }
   ]

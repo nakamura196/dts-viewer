@@ -10,5 +10,8 @@ export default defineConfig({
   test: {
     environment: 'node',
     include: ['src/**/*.test.ts'],
+    // next-intl が拡張子なしで import する next/navigation を Vite 側で解決させる
+    // (i18n/routing を経由する config/site や app/sitemap をテストするため)。
+    server: { deps: { inline: ['next-intl'] } },
   },
 });

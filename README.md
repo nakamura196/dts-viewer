@@ -1,11 +1,11 @@
 # DTS Viewer
 
-[![Live](https://img.shields.io/badge/demo-dts--viewer.vercel.app-0B8BEE)](https://dts-viewer.vercel.app/)
+[![Live](https://img.shields.io/badge/demo-dtsview.ldas.jp-0B8BEE)](https://dtsview.ldas.jp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 **Browse digital text collections published via the [DTS (Distributed Text Services)](https://distributed-text-services.github.io/specifications/) API — entirely in your browser.**
 
-🌐 **Live demo: https://dts-viewer.vercel.app/**
+🌐 **Live demo: https://dtsview.ldas.jp/**
 
 *日本語の説明は [下記](#日本語) にあります。*
 
@@ -31,7 +31,7 @@ DTS Viewer is a web app for hierarchically browsing digital text collections tha
 
 | Collection | DTS endpoint |
 |---|---|
-| Kōi Genji Monogatari (校異源氏物語, CC0) | `https://dts-typescript.vercel.app/api/dts` |
+| Kōi Genji Monogatari (校異源氏物語, CC0) | `https://dts.ldas.jp/api/v2/dts` |
 | DraCor | `https://dev.dracor.org/api/v1/dts` |
 | Alpheios | `https://texts.alpheios.net/api/dts` |
 | Perseids | `https://dts.perseids.org/` |
@@ -77,7 +77,7 @@ DTS Viewer は、**DTS（Distributed Text Services）API 標準**で公開され
 
 | コレクション | DTS エンドポイント |
 |---|---|
-| 校異源氏物語（裏源氏勉強会, CC0） | `https://dts-typescript.vercel.app/api/dts` |
+| 校異源氏物語（裏源氏勉強会, CC0） | `https://dts.ldas.jp/api/v2/dts` |
 | DraCor | `https://dev.dracor.org/api/v1/dts` |
 | Alpheios | `https://texts.alpheios.net/api/dts` |
 | Perseids | `https://dts.perseids.org/` |

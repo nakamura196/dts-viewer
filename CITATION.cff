@@ -8,7 +8,7 @@ authors:
     orcid: https://orcid.org/0000-0001-8245-7925
     website: https://researchmap.jp/nakamura.satoru?lang=en
 repository-code: https://github.com/nakamura196/dts-viewer
-url: https://dts-viewer.vercel.app/
+url: https://dtsview.ldas.jp/
 license: MIT
 keywords:
   - DTS

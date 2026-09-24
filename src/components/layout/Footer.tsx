@@ -1,15 +1,7 @@
 import { getLocale } from 'next-intl/server';
 import { Footer as DsFooter } from '@nakamura196/react-ui';
 import { Link } from '@/i18n/routing';
-
-// トップの「例」と同じ5つの DTS エンドポイント。フッターから ?base= で直接ロード。
-const EXAMPLES = [
-  { label: '校異源氏物語', url: 'https://dts-typescript.vercel.app/api/dts' },
-  { label: 'Dracor', url: 'https://dev.dracor.org/api/v1/dts' },
-  { label: 'Alpheios', url: 'https://texts.alpheios.net/api/dts' },
-  { label: 'Perseids', url: 'https://dts.perseids.org/' },
-  { label: 'Epigraphische Datenbank Heidelberg', url: 'https://edh.ub.uni-heidelberg.de/api/dts/' },
-];
+import { DTS_EXAMPLES } from '@/config/examples';
 
 export default async function Footer() {
   const locale = await getLocale();
@@ -34,7 +26,7 @@ export default async function Footer() {
         },
         {
           heading: ja ? '例' : 'Examples',
-          links: EXAMPLES.map((e) => ({
+          links: DTS_EXAMPLES.map((e) => ({
             label: e.label,
             href: `/?base=${encodeURIComponent(e.url)}`,
           })),

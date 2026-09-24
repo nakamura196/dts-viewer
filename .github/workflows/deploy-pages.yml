@@ -1,5 +1,6 @@
 # Build and deploy the Next.js static export to GitHub Pages.
-# Vercel build is kept independent (vercel.json handles redirect).
+# Vercel build is kept independent (vercel.json redirects dts-viewer.vercel.app
+# to dtsview.ldas.jp).
 name: Deploy Next.js site to Pages
 
 on:
@@ -32,14 +33,18 @@ jobs:
 
       - name: Build static export
         env:
-          # next.config.ts reads this and prepends to all URLs / assets.
-          NEXT_PUBLIC_BASE_PATH: /dts-viewer
+          # dtsview.ldas.jp (GitHub Pages の独自ドメイン) のホスト直下に配信するので
+          # basePath は付けない。独自ドメインを外して github.io/<repo>/ で配信する
+          # 場合だけ NEXT_PUBLIC_BASE_PATH: /dts-viewer を戻す。
           # GA4 Measurement ID (公開値). Repo Variables に NEXT_PUBLIC_GA_ID を
           # 設定したデプロイ者だけが計測を有効化する。フォーク先で意図せず
           # オーナーの GA に送信しないため、fallback は持たない。未設定なら
           # ビルドは成功するが GoogleAnalytics は描画されない。
           NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID }}
         run: npm run build
+
+      - name: Check exported links and assets
+        run: npm run test:export
 
       - name: Add .nojekyll
         # Prevents GitHub Pages from running Jekyll, which would strip files
