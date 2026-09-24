@@ -21,4 +21,13 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
+      - run: npm test
       - run: npm run build
+      - run: npm run test:export
+      # フォーク等で github.io/<repo>/ 配下に置く場合の basePath 付きビルドも壊れていないか
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /dts-viewer
+      - run: npm run test:export
+        env:
+          NEXT_PUBLIC_BASE_PATH: /dts-viewer

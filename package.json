@@ -6,9 +6,11 @@
     "dev": "next dev --port 3105",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:export": "node scripts/check-export.mjs",
+    "test:live": "node scripts/check-live.mjs"
   },
   "dependencies": {
     "@nakamura196/react-ui": "github:nakamura196/react-ui#v0.2.0",
@@ -29,7 +31,7 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.3.2",
+    "eslint-config-next": "^16.3.4",
     "postcss": "^8.5.26",
     "tailwindcss": "^4.1.6",
     "typescript": "^5",

@@ -36,8 +36,8 @@ const title = 'DTS Viewer';
 const description =
   'Application for viewing and searching text collections using DTS (Distributed Text Services) API.';
 const twitter = '@satoru196';
-// SEO 統合: canonical を GH Pages に固定 (siteUrl)。Vercel の旧 URL
-// (dts-viewer.vercel.app) は vercel.json で 301 redirect する。
+// SEO 統合: canonical を dtsview.ldas.jp に固定 (siteUrl)。旧 URL
+// (github.io/dts-viewer, dts-viewer.vercel.app) はどちらも同じパスへ転送される。
 const url = siteUrl;
 const imageUrl = `${url}/home.webp`;
 

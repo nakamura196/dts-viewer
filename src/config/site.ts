@@ -3,13 +3,14 @@ import { routing } from '@/i18n/routing';
 /**
  * 公開サイトの canonical ホスト。
  *
- * GH Pages (`/dts-viewer` 配下) を正本とし、Vercel の旧 URL
- * (dts-viewer.vercel.app) は vercel.json で 301 redirect している。
+ * 配信は GitHub Pages (独自ドメイン dtsview.ldas.jp、ホスト直下)。
+ * 旧 URL の nakamura196.github.io/dts-viewer/* は GitHub Pages が、
+ * dts-viewer.vercel.app/* は vercel.json が、同じパスのまま転送する。
  * デプロイ先を変える場合のみ `NEXT_PUBLIC_SITE_URL` で上書きする。
  * 末尾スラッシュは正規化のため取り除く。
  */
 export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://nakamura196.github.io/dts-viewer'
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dtsview.ldas.jp'
 ).replace(/\/+$/, '');
 
 /**
