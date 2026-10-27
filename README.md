@@ -31,7 +31,7 @@ DTS Viewer is a web app for hierarchically browsing digital text collections tha
 
 | Collection | DTS endpoint |
 |---|---|
-| Kōi Genji Monogatari (校異源氏物語, CC0) | `https://dts-typescript.vercel.app/api/dts` |
+| Kōi Genji Monogatari (校異源氏物語, CC0) | `https://genji.ldas.jp/api/dts` |
 | DraCor | `https://dev.dracor.org/api/v1/dts` |
 | Alpheios | `https://texts.alpheios.net/api/dts` |
 | Perseids | `https://dts.perseids.org/` |
@@ -77,7 +77,7 @@ DTS Viewer は、**DTS（Distributed Text Services）API 標準**で公開され
 
 | コレクション | DTS エンドポイント |
 |---|---|
-| 校異源氏物語（裏源氏勉強会, CC0） | `https://dts-typescript.vercel.app/api/dts` |
+| 校異源氏物語（裏源氏勉強会, CC0） | `https://genji.ldas.jp/api/dts` |
 | DraCor | `https://dev.dracor.org/api/v1/dts` |
 | Alpheios | `https://texts.alpheios.net/api/dts` |
 | Perseids | `https://dts.perseids.org/` |

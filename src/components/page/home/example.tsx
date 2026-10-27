@@ -7,7 +7,7 @@ export default function Example({ setUrl }: { setUrl: (url: string) => void }) {
   const items = [
     {
       label: '校異源氏物語',
-      url: 'https://dts-typescript.vercel.app/api/dts',
+      url: 'https://genji.ldas.jp/api/dts',
     },
     {
       label: 'Dracor',

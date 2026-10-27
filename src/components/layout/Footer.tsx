@@ -4,7 +4,7 @@ import { Link } from '@/i18n/routing';
 
 // トップの「例」と同じ5つの DTS エンドポイント。フッターから ?base= で直接ロード。
 const EXAMPLES = [
-  { label: '校異源氏物語', url: 'https://dts-typescript.vercel.app/api/dts' },
+  { label: '校異源氏物語', url: 'https://genji.ldas.jp/api/dts' },
   { label: 'Dracor', url: 'https://dev.dracor.org/api/v1/dts' },
   { label: 'Alpheios', url: 'https://texts.alpheios.net/api/dts' },
   { label: 'Perseids', url: 'https://dts.perseids.org/' },
